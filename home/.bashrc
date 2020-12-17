@@ -74,6 +74,7 @@ fi
 # Set Global stuff
 export EDITOR=vim
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export GDK_SCALE=2 #high DPI
 
 ## Set the prompt and colors
 alias ls='ls --color=auto'
