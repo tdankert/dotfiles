@@ -18,6 +18,15 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+
+# Set Global stuff
+export EDITOR=vim
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export TERM=xterm
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -50,10 +59,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# Set Global stuff
-export EDITOR=vim
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-
 ## Set the prompt and colors
 alias ls='ls --color=auto'
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
@@ -62,14 +67,7 @@ else
 PS1='\e[2m\A \[\033[0;32m\]\u\[\033[0;37m\]@\h\[\033[0m\]$(if [[ $? == 0 ]]; then echo "\[\033[1;32m\] ¯\_(ツ)_/¯\[\033[0m\]"; else echo "\[\033[1;31m\] (╯°□°）╯︵ ┻━┻\[\033[0m\]"; fi) \n\W $ '
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+# Alias definitions in .bash_aliases
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -99,6 +97,6 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hstr -- \C-j"'; fi
 # if this is interactive shell, then bind 'kill last command' to Ctrl-x k
 if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 
-
+# Homeshick configuration
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
