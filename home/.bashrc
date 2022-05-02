@@ -100,3 +100,11 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
 # Homeshick configuration
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+
+export PATH=$PATH:/home/tdankert/bin
+
+source '/home/tdankert/lib/azure-cli/az.completion'
+
+export PATH=$PATH:/home/tdankert/develop/bin
+
+source '/home/tdankert/develop/lib/azure-cli/az.completion'
