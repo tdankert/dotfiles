@@ -46,6 +46,11 @@ parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+parse_git_name() {
+    basename `git rev-parse --show-toplevel 2>/dev/null` 2>/dev/null
+}
+
+
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
@@ -65,12 +70,12 @@ esac
 ## Set the prompt and colors
 alias ls='ls --color=auto'
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-PS1='\e[2m\A \[\033[0;32m\]\u\[\033[0;31m\]@\h\[\033[0m\]$(if [[ $? == 0 ]]; then echo "\[\033[1;32m\] ¯\_(ツ)_/¯\[\033[0m\]"; else echo "\[\033[1;31m\] (╯°□°）╯︵ ┻━┻\[\033[0m\]"; fi) \n\W '
+PS1='\e[2m\A \[\033[0;32m\]\u\[\033[0;31m\]@\h\[\033[0m\]$(if [[ $? == 0 ]]; then echo "\[\033[1;32m\] ¯\_(ツ)_/¯\[\033[0m\]"; else echo "\[\033[1;31m\] (╯°□°）╯︵ ┻━┻\[\033[0m\]"; fi)  '
 else
-PS1='\e[2m\A \[\033[0;32m\]\u\[\033[0;37m\]@\h\[\033[0m\]$(if [[ $? == 0 ]]; then echo "\[\033[1;32m\] ¯\_(ツ)_/¯\[\033[0m\]"; else echo "\[\033[1;31m\] (╯°□°）╯︵ ┻━┻\[\033[0m\]"; fi) \n\W '
+PS1='\e[2m\A \[\033[0;32m\]\u\[\033[0;37m\]@\h\[\033[0m\]$(if [[ $? == 0 ]]; then echo "\[\033[1;32m\] ¯\_(ツ)_/¯\[\033[0m\]"; else echo "\[\033[1;31m\] (╯°□°）╯︵ ┻━┻\[\033[0m\]"; fi)  '
 fi
 
-export PS1="${PS1}\[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
+export PS1="${PS1}   \$(parse_git_name)  \[\e[91m\]\$(parse_git_branch)\[\e[00m\]\n\W$ "
 
 # Alias definitions in .bash_aliases
 if [ -f ~/.bash_aliases ]; then
