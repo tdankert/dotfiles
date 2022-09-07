@@ -10,5 +10,6 @@ contains
 https://github.com/andsens/homeshick
 
 ## Other stuff
-The bashrc also contains configuration for hstr
+* The bashrc also contains configuration for hstr
 https://github.com/dvorka/hstr
+* Requires az.completion `source '/home/tdankert/develop/lib/azure-cli/az.completion'` (see .bashrc)
