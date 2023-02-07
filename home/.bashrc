@@ -112,3 +112,5 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 source '/home/tdankert/develop/lib/azure-cli/az.completion'
+
+complete -C /usr/bin/terraform terraform
