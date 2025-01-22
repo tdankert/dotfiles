@@ -12,7 +12,7 @@ fi
 
 alias python='/usr/bin/python3'
 
-alias gitclean='git branch | grep -v "develop" | grep -v "master" | xargs git branch -D'
+alias gitclean='git branch | grep -v "develop" | grep -v "main" | xargs git branch -D'
 
 # some more ls aliases
 alias ll='ls -alF'
